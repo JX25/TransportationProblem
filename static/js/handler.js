@@ -13,7 +13,7 @@ $('.add-node-btn.enabled').click(function () {
         }
 
         $('.data-table').find('tr:last').prev().prev().after('<tr class="node-values">' +
-            '<th scope="row" width="28%">- к узлу "' + id + '"</th>' + row + '</tr>');
+            '<th scope="row" width="28%">- Na węzeł "' + id + '"</th>' + row + '</tr>');
     }
 });
 
@@ -55,11 +55,11 @@ function addColumn(selectorGroup, maxWidth) {
 }
 
 $('.remove-node-btn.enabled').click(function () {
-    setSelectOptions('consumption-each-header', 'node-select-form', 'Узел');
+    setSelectOptions('consumption-each-header', 'node-select-form', 'Węzeł');
 });
 
 $('.remove-factory-btn.enabled').click(function () {
-    setSelectOptions('productivity-each-header', 'factory-select-form', 'Фабрика');
+    setSelectOptions('productivity-each-header', 'factory-select-form', 'Fabryka');
 });
 
 function setSelectOptions(header, select, keyword) {
@@ -86,7 +86,7 @@ $('.apply-remove-node-btn').click(function () {
 
         var headers = $('.node-values th').get();
         for (var j = 0; j < headers.length; j++) {
-            headers[j].innerHTML = '- к узлу "' + (j + 1) + '"';
+            headers[j].innerHTML = '- na węzeł "' + (j + 1) + '"';
         }
     }
 

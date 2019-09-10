@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Главная страница{% endblock %}
+{% block title %}Start{% endblock %}
 {% block menu %}
     <div class="col-2">
         <button class="btn btn-outline-dark btn-block add-node-btn enabled">
@@ -38,14 +38,14 @@
         <div class="modal-dialog modal vert-center" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-label">НАСТРОЙКИ УЗЛОВ</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                    <h5 class="modal-title" id="modal-label">Ustawienia odbiorców/węzłów</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
                         <span>&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="node-select">Выбрать узлы для удаления</label>
+                        <label for="node-select">Wybierz węzły do usunięcia</label>
                         <select multiple class="form-control node-select-form" id="node-select">
                         </select>
                     </div>
@@ -62,14 +62,14 @@
         <div class="modal-dialog modal vert-center" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-label">НАСТРОЙКИ ФАБРИК</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                    <h5 class="modal-title" id="modal-label">Ustawienie dostawców/fabryk</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
                         <span>&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="factory-select">Выбрать фабрики для удаления</label>
+                        <label for="factory-select">Wybierz fabryki do usunięcia</label>
                         <select multiple class="form-control factory-select-form" id="factory-select">
                         </select>
                     </div>
@@ -86,8 +86,8 @@
         <div class="modal-dialog modal vert-center" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-label">ПАРАМЕТРЫ ЗАДАЧИ</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                    <h5 class="modal-title" id="modal-label">Parametry zadania</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
                         <span>&times;</span>
                     </button>
                 </div>
@@ -95,11 +95,11 @@
                     <div class="form-check">
                         <label class="form-check-label active">
                             <input class="form-check-input cost-one-ton-checkbox"
-                                   type="checkbox" checked="checked" value="">Учитывать цену 1 тонны песка
+                                   type="checkbox" checked="checked" value="">Rozważ cenę 1t piasku
                         </label>
                         <label class="form-check-label active">
                             <input class="form-check-input daily-cost-loading-checkbox"
-                                   type="checkbox" checked="checked" value="">Учитывать суточную стоимость погрузки
+                                   type="checkbox" checked="checked" value="">Uwzględnij dzienny koszt załadunku
                         </label>
                     </div>
                 </div>
@@ -117,16 +117,15 @@
         <div class="container clearfix">
             <div class="row justify-content-around">
                 <div class="col-main col-main-page col-12">
-                    <h3 align="center">ЗАДАЧА ОБ УЗЛАХ И ФАБРИКАХ</h3>
+                    <h3 align="center">ZTP Dostawcy i Odbiorcy</h3>
                     <hr>
                     <p>
-                        Несколько растворных узлов строительного управления потребляют в сутки тонн песка, который
-                        производят несколько фабрик:
+                        Zapotrzebowanie zakladow
                     </p>
                     <table class="table table-hover consumption-table" width="100%">
                         <tr>
                             <th colspan="{{ initial.CONSUMPTION|length }}" scope="colgroup"
-                                class="consumption-header text-centered">Узлы</th>
+                                class="consumption-header text-centered">Węzły</th>
                         </tr>
                         <tr class="consumption-headers">
                             {% for consumption in initial.CONSUMPTION %}
@@ -142,12 +141,12 @@
                         </tr>
                     </table>
                     <p>
-                        Суточная производительность их равна (тонн):
+                        Ich dzienna produktywnosc jest równa w j.:
                     </p>
                     <table class="table table-hover productivity-table" width="100%">
                         <tr>
                             <th colspan="{{ initial.PRODUCTIVITY|length }}" scope="colgroup"
-                                class="productivity-header text-centered">Фабрики</th>
+                                class="productivity-header text-centered">Fabryki</th>
                         </tr>
                         <tr class="productivity-headers">
                             {% for productivity in initial.PRODUCTIVITY %}
@@ -163,15 +162,15 @@
                         </tr>
                     </table>
                     <p>
-                        Фабрики взымают плату за погрузку песка каждые сутки не с количества отгруженного материала,
-                        а "с факта" его отгрузки за это время данному потребителю, что делается для закрепления его
-                        за фабрикой. Количественные данные приведены в следующей таблице:
+
+                            Wydajnosc fabryk
                     </p>
                     <table class="table table-hover data-table" width="100%">
                         <tr>
-                            <th rowspan="2">Показатели</th>
+                            <th rowspan="2">Wskaźniki</th>
                             <th colspan="{{ initial.PRODUCTIVITY|length }}" scope="colgroup"
-                                class="factory-header text-centered">Номер фабрики</th>
+                                class="factory-header text-centered">
+                                Numer fabryki</th>
                         </tr>
                         <tr class="factory-headers">
                             {% for productivity in initial.PRODUCTIVITY %}
@@ -180,14 +179,14 @@
                             {% endfor %}
                         </tr>
                         <tr class="empty-lines">
-                            <th scope="row" width="28%">Стоимость перевозки 1 т песка от фабрики, руб.:</th>
+                            <th scope="row" width="28%">Koszt transportu 1j</th>
                             {% for productivity in initial.PRODUCTIVITY %}
                                 <td class="empty-line" width="{% widthratio 72 initial.PRODUCTIVITY|length 1 %}%"></td>
                             {% endfor %}
                         </tr>
                         {% for key, value in initial.NODES.items %}
                             <tr class="node-values">
-                                <th scope="row" width="28%">- к узлу "{{ key }}"</th>
+                                <th scope="row" width="28%">-Na węzeł "{{ key }}"</th>
                                 {% for node in value %}
                                     <td class="node editable text-centered"
                                         width="{% widthratio 72 initial.PRODUCTIVITY|length 1 %}%" contenteditable>{{ node }}</td>
@@ -195,14 +194,15 @@
                             </tr>
                         {% endfor %}
                         <tr class="cost-one-ton-values">
-                            <th scope="row" width="28%">Цена 1 т песка, руб.</th>
+                            <th scope="row" width="28%">
+                                    Cena 1 j towaru.</th>
                             {% for cost_one_ton in initial.COST_OF_ONE_TON %}
                                 <td class="cost-one-ton editable text-centered"
                                     width="{% widthratio 72 initial.PRODUCTIVITY|length 1 %}%" contenteditable>{{ cost_one_ton }}</td>
                             {% endfor %}
                         </tr>
                         <tr class="daily-cost-loading-values">
-                            <th scope="row" width="28%">Суточная стоимость погрузки, руб.</th>
+                            <th scope="row" width="28%">Dzienny koszt załadunku.</th>
                             {% for daily_cost_loading in initial.DAILY_COST_OF_GOODS_LOADING %}
                                 <td class="daily-cost-loading editable text-centered"
                                     width="{% widthratio 72 initial.PRODUCTIVITY|length 1 %}%" contenteditable>{{ daily_cost_loading }}</td>
@@ -217,22 +217,22 @@
                     <hr>
                     <div class="results collapse text-centered" data-toggle="collapse"
                          id="collapse-results" onClick="event.stopPropagation();">
-                        <h4>ПОСТАНОВКА ЗАДАЧИ</h4>
+                        <h4>Sformułowanie problemu.</h4>
                         <hr>
                         <span id="ps"></span>
                         <hr>
-                        <h4>НАЧАЛЬНЫЙ ОПОРНЫЙ ПЛАН</h4>
+                        <h4>Wstępny plan zapasów</h4>
                         <hr>
                         <span id="basic_diff"></span>
                         <div id="mem"></div>
                         <hr>
-                        <h4>ПОЛУЧЕНИЕ ОПТИМАЛЬНОГО ПЛАНА</h4>
+                        <h4>Optymalny plan</h4>
                         <hr>
                         <span id="non_degenerated_values"></span>
                         <div id="non_degenerated_status"></div>
                         <div id="pm"></div>
                         <hr>
-                        <h4>РЕЗУЛЬТАТ</h4>
+                        <h4>Wynik</h4>
                         <hr>
                         <div id="final"></div>
                         <span id="ofv"></span>

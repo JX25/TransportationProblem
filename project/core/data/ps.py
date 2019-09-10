@@ -37,7 +37,7 @@ class ProblemStatement:
         return all_costs
 
     def __str__(self):
-        string = 'X(i,j) - масса песка в тоннах, перевозимая от фабрики к узлу.\n\n'
+        string = 'X(i,j) - Towar transportowany z fabryk do odbiorcow.\n\n'
         string += 'X(i,j) ≥ 0, i = [1..%d], j = [1..%d]\n' % \
                   (len(self.productivity), len(self.consumption))
 

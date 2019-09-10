@@ -27,7 +27,7 @@ $('.solve-btn').click(function (event) {
                 if (data.is_successful) {
                     $('.info').html(
                         '<div class="alert alert-success alert-dismissible fade show" role="alert">\n' +
-                        '  <strong>Вычисления прошли успешно.</strong> Пожалуйста, нажмите на кнопку ниже, чтобы посмотреть результаты.' +
+                        '  <strong>Obliczenia zakończone sukcesem. Kliknij przycisk poniżej żeby zobaczyć rezultaty.' +
                         '  <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
                         '    <span aria-hidden="true">&times;</span>\n' +
                         '  </button>\n' +
@@ -49,7 +49,7 @@ $('.solve-btn').click(function (event) {
                     katex.render(data.results['non-degenerated_values'], non_degenerated_values);
                     $('#non_degenerated_status').html(data.results['non-degenerated']);
                     for (var i = 0; i < data.results['diffs'].length; i++) {
-                        $('#pm').append('<br><h5>ИТЕРАЦИЯ №' + (i + 1) + '</h5>' + data.results['step_table'][i] +
+                        $('#pm').append('<br><h5>ITERACJA №' + (i + 1) + '</h5>' + data.results['step_table'][i] +
                             '<p><span id="pseudos-' + i + '"></span></p>' +
                             '<p><span id="diffs-' + i + '"></span></p>');
                         katex.render(data.results['pseudos'][i], document.getElementById('pseudos-' + i));
@@ -65,7 +65,7 @@ $('.solve-btn').click(function (event) {
                 } else {
                     $('.info').html(
                         '<div class="alert alert-danger alert-dismissible fade show" role="alert">\n' +
-                        '  <strong>Во время вычислений было получено исключение:</strong> ' + data.errmsg + '.\n' +
+                        '  <strong>Błąd w czasie wykonywania obliczeń</strong> ' + data.errmsg + '.\n' +
                         '  <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
                         '    <span aria-hidden="true">&times;</span>\n' +
                         '  </button>\n' +
@@ -90,7 +90,7 @@ $('.solve-btn').click(function (event) {
             error: function (xhr, errmsg, err) {
                 $('.info').html(
                     '<div class="alert alert-danger alert-dismissible fade show" role="alert">\n' +
-                    '  <strong>Не удалось выполнить вычисления:</strong> ' + data.errmsg + '.\n' +
+                    '  <strong>Nie można przeprowadzić obliczeń</strong> ' + data.errmsg + '.\n' +
                     '  <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
                     '    <span aria-hidden="true">&times;</span>\n' +
                     '  </button>\n' +
@@ -115,7 +115,7 @@ $('.solve-btn').click(function (event) {
 
         $('.info').html(
             '<div class="alert alert-warning alert-dismissible fade show" role="alert">\n' +
-            '  <strong>Пожалуйста, подождите, идут вычисления.</strong>' +
+            '  <strong>Proszę czekać... Trwa obliczanie</strong>' +
             '</div>'
         );
         $('.editable').attr('contenteditable', false);

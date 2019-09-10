@@ -3,7 +3,7 @@ from project.core.data.ps import ProblemStatement
 
 
 def get_problem_statement(ps: ProblemStatement) -> str:
-    string = '\\begin{gathered}X(i,j) - \\text{масса песка в тоннах, перевозимая от фабрики к узлу.}\\\\\\\\'
+    string = '\\begin{gathered}X(i,j) - \\text{Ilosc towaru przetransportowana z fabryk do zakladow}\\\\\\\\'
 
     string += 'X(i,j) \ge 0, i = \overline{1,%d}, j = \overline{1,%d}\\\\\\\\' % \
               (len(ps.productivity), len(ps.consumption))
@@ -22,8 +22,8 @@ def get_problem_statement(ps: ProblemStatement) -> str:
 
     string += '\\\\'
 
-    string += 'Y(i,j) = \\begin{cases}0 &\\text{если } X(i,j) = 0, i = \overline{1,%d}, j = \overline{1,%d}\\\\' \
-              '1 &\\text{если } X(i,j) > 0, i = \overline{1,%d}, j = \overline{1,%d}\end{cases}\\\\' % \
+    string += 'Y(i,j) = \\begin{cases}0 &\\text{jesli  } X(i,j) = 0, i = \overline{1,%d}, j = \overline{1,%d}\\\\' \
+              '1 &\\text{jesli  } X(i,j) > 0, i = \overline{1,%d}, j = \overline{1,%d}\end{cases}\\\\' % \
               (len(ps.productivity), len(ps.consumption), len(ps.productivity), len(ps.consumption))
 
     string += '\\\\'
@@ -53,14 +53,14 @@ def get_basic_diff(ps: ProblemStatement, diff: float):
 
 def get_basic_plan(x: list, costs: list, tpt: (int or TransportationProblemType)) -> str:
     if tpt == TransportationProblemType.BALANCED:
-        string_type = 'сбалансированной'
+        string_type = 'Zrownowazony'
     elif tpt == TransportationProblemType.FICTITIOUS_FACTORY:
-        string_type = 'не сбалансированной (с фиктивной фабрикой)'
+        string_type = 'Nie zrownowazony blad fabryka'
     elif tpt == TransportationProblemType.FICTITIOUS_NODE:
-        string_type = 'не сбалансированной (с фиктивным узлом)'
+        string_type = 'Nie zrownowazony blad wezel'
     else:
-        string_type = 'с неизвестным типом'
-    string = 'Задача является <strong>%s</strong>.<br><br>' % string_type
+        string_type = 'Nieznany typ'
+    string = 'Zadanie <strong>%s</strong>.<br><br>' % string_type
 
     string += '<table class="table table-hover" width="100%">'
     for i in range(len(x)):
@@ -81,7 +81,7 @@ def get_non_degenerated_values(actual_count: int, ps: ProblemStatement) -> str:
 
 
 def get_non_degenerated_status(status: bool) -> str:
-    return 'Задача является <strong>%s</strong>.' % ('невырожденной' if status else 'вырожденной')
+    return 'Zadanie <strong>%s</strong>.' % ('niezdegenerowane' if status else 'zdegenerowany')
 
 
 def get_step_table(alpha: list, beta: list, x: list, costs: list) -> str:
@@ -199,4 +199,4 @@ def get_final(x: list, costs: list, rows: int, cols: int) -> str:
 
 
 def get_objective_function_value(value: float) -> str:
-    return '\\begin{gathered}F = ' + str(value) + '\\text{ (руб.)}\end{gathered}'
+    return '\\begin{gathered}F = ' + str(value) + '\\text{ }\end{gathered}'
